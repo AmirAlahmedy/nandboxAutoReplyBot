@@ -1,3 +1,4 @@
+package com.nandbox.bots.autoreply;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

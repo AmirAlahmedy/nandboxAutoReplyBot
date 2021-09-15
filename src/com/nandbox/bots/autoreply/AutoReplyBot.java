@@ -1,3 +1,4 @@
+package com.nandbox.bots.autoreply;
 import java.util.regex.Pattern;
 import java.time.Instant;
 import java.io.FileInputStream;
@@ -43,7 +44,7 @@ class Helper{
 	}
 }
 
-public class Bot {
+public class AutoReplyBot {
 	
 	public static String getTokenFromPropFile() throws IOException {
 		Properties prop = new Properties();
