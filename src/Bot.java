@@ -1,7 +1,8 @@
 import java.util.regex.Pattern;
 import java.time.Instant;
-
-
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Properties;
 
 import com.nandbox.bots.api.Nandbox;
 import com.nandbox.bots.api.Nandbox.Api;
@@ -42,10 +44,19 @@ class Helper{
 }
 
 public class Bot {
+	
+	public static String getTokenFromPropFile() throws IOException {
+		Properties prop = new Properties();
+	
+		InputStream input = new FileInputStream("token.properties");
+		prop.load(input);
+		return prop.getProperty("Token");
+	}
+	
 public static void main(String[] args) throws Exception {
 		
-		//String token = "90091819155076049:0:sbCUoUoUQjCXDNWsYLaI6Cj8BSPgKM";
-		String token = "90091905646805157:0:Mtp8DJgzBVdpePpwEaDACYipXiwyMF";
+	
+		String token = getTokenFromPropFile();
 		final Database db = new Database("Messages");
 		NandboxClient client = NandboxClient.get();
 		client.connect(token, new Nandbox.Callback() {
